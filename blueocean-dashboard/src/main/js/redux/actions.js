@@ -642,6 +642,7 @@ export const actions = {
         return (dispatch, getState) => {
             const data = getState().adminStore.nodes;
             const nodesBaseUrl = calculateNodeBaseUrl(config);
+            console.log(nodesBaseUrl);
             function getNodeAndSteps(information) {
                 let node;
                 if (!config.node) {
@@ -661,7 +662,7 @@ export const actions = {
                 });
                 return dispatch(actions.fetchSteps(mergedConfig));
             }
-            if (!data || !data[nodesBaseUrl]) {
+//            if (!data || !data[nodesBaseUrl]) {
                 return exports.fetchJson(
                   nodesBaseUrl,
                   (json) => {
@@ -676,8 +677,8 @@ export const actions = {
                   },
                   (error) => console.error('error', error)
                 );
-            }
-            return getNodeAndSteps(data[nodesBaseUrl]);
+//            }
+//            return getNodeAndSteps(data[nodesBaseUrl]);
         };
     },
 

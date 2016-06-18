@@ -91,6 +91,15 @@ class OrganizationPipelines extends Component {
                     _this.props.updateBranchState(eventCopy, _this.context.config);
                     break;
                 }
+                case 'job_run_updated': {
+                    console.log('job_run_updated!!')
+                    // _this.props.processJobQueuedEvent(eventCopy)
+                    // _this.props.fetchPipelines(_this.context.config, _this.props.organization);
+                    _this.props.fetchNodes({name:event.job_name, runId:event.jenkins_object_id, _appURLBase:'/jenkins/blue'});
+                    // _this.props.updateRunState(eventCopy, _this.context.config);
+                    // _this.props.updateBranchState(eventCopy, _this.context.config);
+                    break;
+                }
                 default :
                 // Else ignore the event.
                 }
